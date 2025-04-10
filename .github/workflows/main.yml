@@ -14,7 +14,7 @@ jobs:
 
       - name: Clone Repo A (Dev)
         run: |
-          git clone https://mdmojahid19:${{ secrets.PAT_FOR_GIT }}@github.com/mdmojahid19/test7.git temp-repo
+          git clone https://mdmojahid19:${{ secrets.PAT_FOR_GIT }}@github.com/mdmojahid19/test8.git temp-repo
           cp -r temp-repo/* .
           rm -rf temp-repo
       - name: Commit & Push
@@ -25,7 +25,7 @@ jobs:
           git config user.email "actions@github.com"
           git add .
           git commit -m "Synced from Repo A" || echo "No changes to commit"
-          git push https://x-access-token:${PAT_FOR_GIT}@github.com/mdmojahid20/test7.git HEAD:main
+          git push https://x-access-token:${PAT_FOR_GIT}@github.com/mdmojahid20/test8.git HEAD:main
           
       - name: Trigger Deploy Workflow
         env:
@@ -34,5 +34,5 @@ jobs:
           curl -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
-            https://api.github.com/repos/mdmojahid20/test7/actions/workflows/deploy.yml/dispatches \
+            https://api.github.com/repos/mdmojahid20/test8/actions/workflows/deploy.yml/dispatches \
             -d '{"ref":"main"}'
